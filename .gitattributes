@@ -1,2 +1,74 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Visual Studio 관련
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 빌드 출력 폴더
+bin/
+obj/
+debug/
+release/
+
+# NuGet 관련
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# MSBuild 로그 및 자동 생성 파일
+*.log
+*.tlog
+*.cache
+*.ide
+
+# Rider 관련
+*.sln.iml
+.idea/
+*.sln.dotSettings.user
+
+# Resharper 관련
+_ReSharper*
+*.DotSettings.user
+
+# ASP.NET 관련
+App_Data/
+App_Code/
+
+# StyleCop 분석 파일
+StyleCopCache.*
+TestResult.xml
+*.trx
+
+# 기타 임시 파일
+~$*
+*.tmp
+*.bak
+*.swp
+*._*
+
+# Coverage 관련
+*.coverage
+*.coveragexml
+coverage.opencover.xml
+
+# Publish 관련
+publish/
+*.publishsettings
+
+# 로컬 설정 파일
+*.config
+*.local
+*.settings
+
+# macOS 관련
+.DS_Store
+
+# Windows 관련
+Thumbs.db
+desktop.ini
