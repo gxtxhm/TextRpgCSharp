@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
-    internal class Boss : Monster
+    public class Boss : Monster
     {
         public Boss() : base()
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
-    class Player
+    public class Player
     {
         int _hp=100;
         int _exp = 0;
@@ -32,8 +32,10 @@ namespace TextRpgCS
         public int MaxExp { get; set; } = 10;
         public int Hp { get { return _hp; } set { if (value <= 0) { _hp = 0; Dead(); } else { _hp = value; } } } 
         public int AttackPower { get; set; } = 10;
+        
+        public Player() { }
 
-        public Player(string Name) 
+        public Player(string Name) : this()
         {
             this.Name = Name;
         }

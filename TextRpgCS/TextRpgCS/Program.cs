@@ -24,6 +24,33 @@ void PrintMainMenu()
     Console.WriteLine(UtilTextManager.MainMenuChoice);
 }
 
+bool StartBattle(Player player, Monster monster)
+{
+    Console.WriteLine($"{monster.Name}이(가) 당신을 공격합니다!\n");
+    int choice;
+    while (player.Hp > 0 && monster.Hp > 0)
+    {
+        Console.WriteLine(UtilTextManager.ChoiceMenuInBattle);
+        choice = int.Parse(Console.ReadLine());
+        if (choice == 3)
+        {
+            Console.WriteLine(UtilTextManager.ExitDungeon);
+            return;
+        }
+        else if (choice == 2)
+        {
+            // 인벤토리 보여주기
+        }
+        else
+        {
+            Console.WriteLine($"용사{player.Name}가 {monster.Name}을 공격!");
+            player.Attack(monster);
+            if (monster.Hp <= 0) break;
+            monster.Attack(player);
+        }
+    }
+}
+
 void MoveTown()
 {
     Console.WriteLine(UtilTextManager.EnterTown);
