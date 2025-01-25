@@ -30,7 +30,13 @@ namespace TextRpgCS
             } 
         }
         public int MaxExp { get; set; } = 10;
-        public int Hp { get { return _hp; } set { if (value <= 0) { _hp = 0; Dead(); } else { _hp = value; } } } 
+        public int Hp { get { return _hp; }
+            set {
+                if (value <= 0) { _hp = 0; Dead(); }
+                else if (value > 100) { _hp = 100; }
+                else { _hp = value; } 
+            } 
+        } 
         public int AttackPower { get; set; } = 10;
         
         public Player() { }
