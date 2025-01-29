@@ -9,7 +9,8 @@ namespace TextRpgCS
 {
     public class Player
     {
-        int _hp=100;
+        public int MaxHp { get; set; } = 100;
+        int _hp;
         int _exp = 0;
 
         public string Name { get; set; }
@@ -33,13 +34,15 @@ namespace TextRpgCS
         public int Hp { get { return _hp; }
             set {
                 if (value <= 0) { _hp = 0; Dead(); }
-                else if (value > 100) { _hp = 100; }
+                else if (value > MaxHp) { _hp = MaxHp; }
                 else { _hp = value; } 
             } 
         } 
         public int AttackPower { get; set; } = 10;
-        
-        public Player() { }
+        // 높을수록 데미지 더 받음. 
+        public float DefenseRate { get; set; } = 1;
+
+        public Player() { _hp = MaxHp; }
 
         public Player(string Name) : this()
         {
@@ -62,7 +65,7 @@ namespace TextRpgCS
 
         public void TakeDamage(int damage)
         {
-            Hp -= damage;
+            Hp -= (int)(damage*DefenseRate);
             Console.WriteLine($"몬스터에게 데미지{damage}를 입었습니다! 현재체력 : {Hp}");
         }
 

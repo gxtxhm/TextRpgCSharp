@@ -10,22 +10,36 @@ namespace TextRpgCS
     {
         public static ItemManager Instance { get; private set; }= new ItemManager();
 
+        // 아이템이름, 개수
         public Dictionary<string,int> Inventory { get; set; }
 
-        public Dictionary<string,int> DurationPotions { get; set; }
+        public Dictionary<string, DurationItem> DurationItems { get; set; }
 
         
 
         ItemManager() 
         {
             Inventory = new Dictionary<string,int>();
-            DurationPotions = new Dictionary<string,int>();
+            DurationItems = new Dictionary<string, DurationItem>();
 
         }
 
         public void Update()
         {
-            
+            List<string> RemoveItems = new List<string>();
+            foreach (var item in DurationItems)
+            {
+                item.Value.Duration--;
+                if(item.Value.Duration <= 0 )
+                {
+                    item.Value.EndEffect();
+                    RemoveItems.Add(item.Key);
+                }
+            }
+            foreach (var item in RemoveItems)
+            {
+                DurationItems.Remove(item);
+            }
         }
 
         public void AddItem(Item item)
@@ -46,15 +60,29 @@ namespace TextRpgCS
             }
         }
 
-        public void RegistPortion(Item portion)
+        public void RegistItem(Item item)
         {
-            DurationPortion? dp = portion as DurationPortion;
-            if (dp == null)
+            DurationItem? di = item as DurationItem;
+            if (di == null)
             {
-                Console.WriteLine("버프아이템 등록오류 : RegistPortion");
+                Console.WriteLine("버프아이템 등록오류 : RegistItem");
                 return;
             }
-            DurationPotions[dp.Name] = dp.Duration;
+            DurationItems[di.Name] = di;
+        }
+
+        public void PrintDurationItemList()
+        {
+
+        }
+
+        public void PrintInventory()
+        {
+            foreach (var item in Inventory)
+            {
+                
+            }
+            //Console.WriteLine($"이름 : {}");
         }
     }
 }

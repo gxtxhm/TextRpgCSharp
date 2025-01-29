@@ -34,13 +34,14 @@ namespace TextRpgCS
     };
 
     // 여기서 사용, 사용종료 구현각각해서 아이ㅏ템매니저에서 Update로 계산
-    abstract class DurationPortion : Item
+    // 턴 개념이 있는 아이템은 이 클래스를 상속
+    abstract class DurationItem : Item
     {
         public int Duration = 3;
-        public virtual void EndEffect() { }
+        public virtual void EndEffect() { Console.WriteLine($"{Name}아이템의 버프지속시간이 종료되었습니다."); }
     }
 
-    class AttackPotion : DurationPortion
+    class AttackPotion : DurationItem
     {
         
         public AttackPotion()
@@ -52,15 +53,15 @@ namespace TextRpgCS
         {
             base.Use();
             // 세턴동안 진행
-            
+            GameManager.Instance.Player.AttackPower += 10;
         }
         public override void EndEffect() 
         {
-
+            GameManager.Instance.Player.AttackPower -= 10;
         }
     };
 
-    class ShieldPotion : DurationPortion
+    class ShieldPotion : DurationItem
     {
 
         public ShieldPotion()
@@ -73,8 +74,12 @@ namespace TextRpgCS
         {
             base.Use();
             // 3턴 동안 피해감소
+            GameManager.Instance.Player.DefenseRate -=0.5f;
         }
-        public override void EndEffect() { }
+        public override void EndEffect() 
+        {
+            GameManager.Instance.Player.DefenseRate += 0.5f;
+        }
     };
 
     class RandomPortion : Item
@@ -91,6 +96,30 @@ namespace TextRpgCS
         {
             base.Use();
             // 랜덤 효과 발생
+            Random random = new Random();
+            
+            int randomValue = random.Next(0, 4);
+
+            switch(randomValue)
+            {
+                // hp 전부 회복
+                case 0:
+                    GameManager.Instance.Player.Hp = GameManager.Instance.Player.MaxHp;
+                    break;
+                // 공격력 2배
+                case 1:
+                    GameManager.Instance.Player.AttackPower *= 2;
+                    break;
+                // hp 절반으로 감소
+                case 2:
+                    GameManager.Instance.Player.Hp /= 2;
+                    break;
+                // 받는 데미지 2배
+                case 3:
+                    GameManager.Instance.Player.DefenseRate *= 2;
+                    break;
+
+            }
         }
     }
 }
