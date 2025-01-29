@@ -68,6 +68,7 @@ namespace TextRpgCS
         {
             Console.WriteLine("캐릭터 상태창입니다.");
             Player.PrintInfo();
+            ItemManager.Instance.PrintInventory();
         }
 
         public void ExitGame()
@@ -102,6 +103,7 @@ namespace TextRpgCS
                 else if (choice == 2)
                 {
                     // 인벤토리 보여주기
+                    ItemManager.Instance.PrintInventory();
                 }
                 else
                 {
@@ -131,7 +133,6 @@ namespace TextRpgCS
                 return;
             }
             PlayDungeon(Player);
-            
         }
 
         void PlayDungeon(Player player)
@@ -179,8 +180,9 @@ namespace TextRpgCS
 
                     if (randomValue < 45)
                     {
+                        Item randitem = ItemManager.Instance.RandomCreateItem();
                         Console.WriteLine("당신은 주변을 탐색하던 중 희미하게 빛나는 물체를 발견했습니다.\r\n" +
-                            "가까이 다가가 확인하니, {아이템 이름}을(를) 발견했습니다!\r\n" +
+                            $"가까이 다가가 확인하니, {randitem.Name}을(를) 발견했습니다!\r\n" +
                             "이 아이템은 당신의 여정에 큰 도움이 될 것입니다.");
                     }
                     else
