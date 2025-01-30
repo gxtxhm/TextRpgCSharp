@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
-    abstract class Item
+    public abstract class Item
     {
         public string Name { get; protected set; }
         public string Description { get; protected set; }
@@ -15,10 +15,11 @@ namespace TextRpgCS
         public virtual void Use()
         {
             Console.WriteLine($"{Name}아이템을 사용!");
+            
         }
     };
 
-    class HpPortion : Item
+    public class HpPortion : Item
     {
         public HpPortion()
         {
@@ -30,18 +31,19 @@ namespace TextRpgCS
         {
             base.Use();
             GameManager.Instance.Player.Hp += 50;
+            ItemManager.Instance.RemoveItem(Name);
         }
     };
 
     // 여기서 사용, 사용종료 구현각각해서 아이ㅏ템매니저에서 Update로 계산
     // 턴 개념이 있는 아이템은 이 클래스를 상속
-    abstract class DurationItem : Item
+    public abstract class DurationItem : Item
     {
         public int Duration = 3;
         public virtual void EndEffect() { Console.WriteLine($"{Name}아이템의 버프지속시간이 종료되었습니다."); }
     }
 
-    class AttackPotion : DurationItem
+    public class AttackPotion : DurationItem
     {
         
         public AttackPotion()
@@ -54,14 +56,19 @@ namespace TextRpgCS
             base.Use();
             // 세턴동안 진행
             GameManager.Instance.Player.AttackPower += 10;
+            Item? it= ItemManager.Instance.RemoveItem(Name);
+            if(it!=null)
+                ItemManager.Instance.RegistItem(it);
+            
         }
         public override void EndEffect() 
         {
+            //if (GameManager.Instance.Player == null) return;
             GameManager.Instance.Player.AttackPower -= 10;
         }
     };
 
-    class ShieldPotion : DurationItem
+    public class ShieldPotion : DurationItem
     {
 
         public ShieldPotion()
@@ -75,14 +82,18 @@ namespace TextRpgCS
             base.Use();
             // 3턴 동안 피해감소
             GameManager.Instance.Player.DefenseRate -=0.5f;
+            Item? it = ItemManager.Instance.RemoveItem(Name);
+            if (it != null)
+                ItemManager.Instance.RegistItem(it);
         }
         public override void EndEffect() 
         {
             GameManager.Instance.Player.DefenseRate += 0.5f;
+            
         }
     };
 
-    class RandomPortion : Item
+    public class RandomPortion : Item
     {
         public RandomPortion()
         {

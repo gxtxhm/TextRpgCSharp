@@ -14,7 +14,9 @@ namespace TextRpgCS
         RandomPortion
     }
 
-    internal class ItemManager
+    // TODO : 아이템에 아이디 부여해서 관리하는 방식이 더 나을 것 같음.
+    // ItemDataTableManager 같은것도 관리해서 하드코딩대신 사용하면 좋을듯.
+    public class ItemManager
     {
         public static ItemManager Instance { get; private set; }= new ItemManager();
 
@@ -38,6 +40,12 @@ namespace TextRpgCS
 
         public void Update()
         {
+            if (DurationItems == null)
+            {
+                Console.WriteLine("durationItems Null!");
+                return;
+            }
+            if (DurationItems.Count == 0) return;
             List<string> RemoveItems = new List<string>();
             foreach (var item in DurationItems)
             {
@@ -63,10 +71,12 @@ namespace TextRpgCS
             Inventory[item.Name].Add(item);
         }
 
-        public void RemoveItem(string itemName)
+        public Item? RemoveItem(string itemName)
         {
+            Item? it;
             if(Inventory.ContainsKey(itemName) )
             {
+                it = Inventory[itemName][0];
                 Inventory[itemName].RemoveAt(0);
                 if (Inventory[itemName].Count()==0)
                     Inventory.Remove(itemName);
@@ -74,7 +84,9 @@ namespace TextRpgCS
             else
             {
                 Console.WriteLine($"Error! 없는 아이템 사용!{itemName}");
+                it = null;
             }
+            return it;
         }
 
         

@@ -48,4 +48,6 @@ namespace TestProject1
             Assert.Equal(30, monster.Hp); // 몬스터 체력이 50 - 20 = 30이어야 함.
         }
     }
+
+
 }

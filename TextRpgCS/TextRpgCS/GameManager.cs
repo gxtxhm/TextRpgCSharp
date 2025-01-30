@@ -16,7 +16,7 @@ namespace TextRpgCS
     }
 
 
-    class GameManager
+    public class GameManager
     {
         public static GameManager Instance { get; }=new GameManager();
 
