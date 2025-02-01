@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
-    public class Monster
+    public class Monster : IGameCharacter
     {
         static int CountId = 1;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
-    public class Player
+    public class Player : IGameCharacter
     {
         public int MaxHp { get; set; } = 100;
         int _hp;

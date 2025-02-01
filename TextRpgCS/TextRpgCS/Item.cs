@@ -11,6 +11,7 @@ namespace TextRpgCS
     {
         public string Name { get; protected set; }
         public string Description { get; protected set; }
+        public ItemType Type { get; protected set; }
 
         public virtual void Use()
         {
@@ -25,6 +26,7 @@ namespace TextRpgCS
         {
             Name = "HP포션";
             Description = "Hp 50을 회복합니다.";
+            Type = ItemType.HpPortion;
         }
 
         public override void Use()
@@ -50,6 +52,7 @@ namespace TextRpgCS
         {
             Name = "공격력증가포션";
             Description = "공격력을 3턴동안 10증가시킵니다.";
+            Type = ItemType.AttackPotion;
         }
         public override void Use()
         {
@@ -75,6 +78,7 @@ namespace TextRpgCS
         {
             Name = "방어력증가포션";
             Description = "3턴 동안 받는 피해가 50% 감소합니다.";
+            Type = ItemType.ShieldPotion;
         }
 
         public override void Use()
@@ -101,6 +105,7 @@ namespace TextRpgCS
             Description = "랜덤으로 긍정적 또는 부정적 효과를 발생시킴.\r\n\r\n" +
                 "긍정적 효과: 체력 전부 회복, 공격력 2배 증가.\r\n\r\n" +
                 "부정적 효과: 체력 절반 감소, 방어력 감소.";
+            Type = ItemType.RandomPortion;
         }
 
         public override void Use()

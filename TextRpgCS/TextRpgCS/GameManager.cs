@@ -23,7 +23,7 @@ namespace TextRpgCS
         public static int MonsterCount { get; } = 3;
 
         public Player Player { get; private set; }
-        public  Monster[] monsters;
+        public  List<Monster> monsters;
 
         Boss _boss;
         public Boss Boss { get { return _boss; } }
@@ -31,10 +31,10 @@ namespace TextRpgCS
         public void Init()
         {
             Player = new Player();
-            monsters = new Monster[MonsterCount];
+            monsters = new List<Monster>();
             for(int i = 0; i < MonsterCount; i++) 
             {
-                monsters[i] = new Monster();
+                monsters.Add(new Monster());
             }
 
             _boss = new Boss();
