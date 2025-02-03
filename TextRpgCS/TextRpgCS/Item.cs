@@ -7,21 +7,27 @@ using System.Threading.Tasks;
 
 namespace TextRpgCS
 {
+    public interface IUseableItem
+    {
+        public void Use();
+        event Action<string> OnUsedItem;
+    }
     public abstract class Item
     {
         public string Name { get; protected set; }
         public string Description { get; protected set; }
         public ItemType Type { get; protected set; }
 
-        public virtual void Use()
-        {
-            Console.WriteLine($"{Name}아이템을 사용!");
-            
-        }
+        //public virtual void Use()
+        //{
+        //    Console.WriteLine($"{Name}아이템을 사용!");
+        //}
     };
 
-    public class HpPortion : Item
+    public class HpPortion : Item,IUseableItem
     {
+        public event Action<string> OnUsedItem;
+
         public HpPortion()
         {
             Name = "HP포션";
@@ -29,9 +35,8 @@ namespace TextRpgCS
             Type = ItemType.HpPortion;
         }
 
-        public override void Use()
+        public void Use()
         {
-            base.Use();
             GameManager.Instance.Player.Hp += 50;
             ItemManager.Instance.RemoveItem(Name);
         }
@@ -39,9 +44,11 @@ namespace TextRpgCS
 
     // 여기서 사용, 사용종료 구현각각해서 아이ㅏ템매니저에서 Update로 계산
     // 턴 개념이 있는 아이템은 이 클래스를 상속
-    public abstract class DurationItem : Item
+    public abstract class DurationItem : Item, IUseableItem
     {
         public int Duration = 3;
+        public event Action<string> OnUsedItem;
+        public virtual void Use() { }
         public virtual void EndEffect() { Console.WriteLine($"{Name}아이템의 버프지속시간이 종료되었습니다."); }
     }
 
@@ -97,8 +104,10 @@ namespace TextRpgCS
         }
     };
 
-    public class RandomPortion : Item
+    public class RandomPortion : Item, IUseableItem
     {
+        public event Action<string> OnUsedItem;
+
         public RandomPortion()
         {
             Name = "랜덤포션";
@@ -108,9 +117,8 @@ namespace TextRpgCS
             Type = ItemType.RandomPortion;
         }
 
-        public override void Use()
+        public void Use()
         {
-            base.Use();
             // 랜덤 효과 발생
             Random random = new Random();
             
