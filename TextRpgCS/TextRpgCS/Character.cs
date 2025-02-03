@@ -12,6 +12,11 @@ namespace TextRpgCS
         public int AttackPower { get; set; }
         public string Name { get; set; }
 
+         //delegate void OnDead();
+         event Action OnDeadEvent;
+
+         //delegate void OnAttack();
+         event Action OnAttackEvent;
     }
 
 

@@ -13,6 +13,12 @@ namespace TextRpgCS
         int _hp;
         int _exp = 0;
 
+        //public delegate void OnDead();
+        public event Action OnDeadEvent;
+
+        //public delegate void OnAttack();
+        public event Action OnAttackEvent;
+
         public string Name { get; set; }
         public int Level { get; set; } = 1;
         public int Exp { get { return _exp; } 
@@ -33,7 +39,7 @@ namespace TextRpgCS
         public int MaxExp { get; set; } = 10;
         public int Hp { get { return _hp; }
             set {
-                if (value <= 0) { _hp = 0; Dead(); }
+                if (value <= 0) { _hp = 0; OnDeadEvent?.Invoke(); }
                 else if (value > MaxHp) { _hp = MaxHp; }
                 else { _hp = value; } 
             } 
@@ -42,7 +48,7 @@ namespace TextRpgCS
         // 높을수록 데미지 더 받음. 
         public float DefenseRate { get; set; } = 1;
 
-        public Player() { _hp = MaxHp; }
+        public Player() { _hp = MaxHp;OnDeadEvent += Dead; OnAttackEvent += PlayAttack; }
 
         public Player(string Name) : this()
         {
@@ -57,16 +63,22 @@ namespace TextRpgCS
             Console.WriteLine($"체력 : {Hp}");
             Console.WriteLine($"공격력 : {AttackPower}\n");
         }
+        public void PlayAttack()
+        {
+            Console.WriteLine("플레이어가 공격모션을 실행합니다. in Player");
+        }
 
         public void Attack(Monster monster)
         {
+            OnAttackEvent?.Invoke();
             monster.TakeDamage(AttackPower);
+
         }
 
         public void TakeDamage(int damage)
         {
-            Hp -= (int)(damage*DefenseRate);
             Console.WriteLine($"몬스터에게 데미지{damage}를 입었습니다! 현재체력 : {Hp}");
+            Hp -= (int)(damage*DefenseRate);
         }
 
         public void GetExp(int exp)

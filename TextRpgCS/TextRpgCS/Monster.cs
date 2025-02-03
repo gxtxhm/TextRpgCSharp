@@ -16,9 +16,16 @@ namespace TextRpgCS
         public string Name { get; set; }
         public int Level { get; set; } = 1;
         public int Exp { get; set; } = 10;
-        public int Hp { get { return _hp; } set { if (value <= 0) { _hp = 0;Dead(); } else { _hp = value; } } }
-        public int AttackPower { get; set; } = 10;
+        public int Hp { get { return _hp; } set { if (value <= 0) { _hp = 0; OnDeadEvent?.Invoke(); } else { _hp = value; } } }
 
+        //public delegate void OnDead();
+        public event Action OnDeadEvent;
+
+        //public delegate void OnAttack();
+        public event Action OnAttackEvent;
+
+        public int AttackPower { get; set; } = 10;
+        
         public Monster()
         {
             Level = 1*CountId;
@@ -26,10 +33,19 @@ namespace TextRpgCS
             Hp = 30*CountId;
             AttackPower = 10*CountId/2;
             this.Name = $"몬스터{CountId++}";
+
+            OnDeadEvent += Dead;
+            OnAttackEvent += PlayAttack;
+        }
+
+        public void PlayAttack()
+        {
+            Console.WriteLine($"{Name}몬스터가 공격을 시도합니다.");
         }
 
         public void Attack(Player player)
         {
+            OnAttackEvent?.Invoke();
             player.TakeDamage(AttackPower);
         }
 
@@ -41,7 +57,7 @@ namespace TextRpgCS
 
         void Dead()
         {
-            
+            Console.WriteLine($"{CountId}번 몬스터 사망!");
         }
     }
 }

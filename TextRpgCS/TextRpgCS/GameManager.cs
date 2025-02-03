@@ -35,9 +35,15 @@ namespace TextRpgCS
             for(int i = 0; i < MonsterCount; i++) 
             {
                 monsters.Add(new Monster());
+                monsters[i].OnDeadEvent += BroadcastMonsterDead;
             }
 
             _boss = new Boss();
+            _boss.OnDeadEvent += BroadcastMonsterDead;
+            // 이벤트 등록
+            Player.OnDeadEvent += GameOver;
+            Player.OnAttackEvent += BroadcastPlayerAttack;
+
         }
 
         public void ResetMonter()
@@ -82,39 +88,7 @@ namespace TextRpgCS
             Console.WriteLine(UtilTextManager.MainMenuChoice);
         }
 
-        public ResultBattle StartBattle(Player player, Monster monster)
-        {
-            Console.WriteLine($"{monster.Name}이(가) 당신을 공격합니다!\n");
-            int choice;
-            while (player.Hp > 0 && monster.Hp > 0)
-            {
-                Console.WriteLine(UtilTextManager.ChoiceMenuInBattle);
-                choice = int.Parse(Console.ReadLine());
-                if (choice == 3)
-                {
-                    if (monster is Boss)
-                        Console.WriteLine(UtilTextManager.RetreatBoss);
-                    else
-                    {
-                        Console.WriteLine(UtilTextManager.ExitDungeon);
-                        return ResultBattle.RetreatPlayer;
-                    }
-                }
-                else if (choice == 2)
-                {
-                    // 인벤토리 보여주기
-                    ItemManager.Instance.PrintInventory();
-                }
-                else
-                {
-                    Console.WriteLine($"용사{player.Name}가 {monster.Name}을 공격!");
-                    player.Attack(monster);
-                    if (monster.Hp <= 0) return ResultBattle.MonsterDie;
-                    monster.Attack(player);
-                }
-            }
-            return ResultBattle.PlayerDie;
-        }
+        
 
         public void MoveTown()
         {
@@ -144,7 +118,7 @@ namespace TextRpgCS
             {
                 Console.WriteLine(UtilTextManager.DungeonAppearedMonster[count]);
 
-                ResultBattle result = StartBattle(player, monsters[count]);
+                ResultBattle result = BattleManager.Instance.StartBattle(player, monsters[count]);
 
                 if (result == ResultBattle.RetreatPlayer) return;
                 else if (result == ResultBattle.PlayerDie)
@@ -199,7 +173,7 @@ namespace TextRpgCS
             // 보스등장
             Console.WriteLine(UtilTextManager.AppearedBoss);
 
-            ResultBattle resultBattle = GameManager.Instance.StartBattle(player, GameManager.Instance.Boss);
+            ResultBattle resultBattle = BattleManager.Instance.StartBattle(player, GameManager.Instance.Boss);
 
             if (resultBattle == ResultBattle.PlayerDie)
             {
@@ -214,5 +188,21 @@ namespace TextRpgCS
                 Console.WriteLine(UtilTextManager.ClearBoss);
             }
         }
+
+        void GameOver()
+        {
+            Console.WriteLine("플레이어가 사망하여 게임이 종료되었습니다. in GameManager");
+        }
+
+        void BroadcastPlayerAttack()
+        {
+            Console.WriteLine("GameManager : 플레이어가 공격을 시도합니다!");
+        }
+
+        void BroadcastMonsterDead()
+        {
+            Console.WriteLine("몬스터가 사망합니다!");
+        }
+
     }
 }
