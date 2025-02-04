@@ -44,6 +44,8 @@ namespace TextRpgCS
             Player.OnDeadEvent += GameOver;
             Player.OnAttackEvent += BroadcastPlayerAttack;
 
+            ItemManager.Instance.LoadItemsFromJson();
+            ItemManager.Instance.OnUsedItem += BroadcastUseItemLog;
         }
 
         public void ResetMonter()
@@ -204,5 +206,9 @@ namespace TextRpgCS
             Console.WriteLine("몬스터가 사망합니다!");
         }
 
+        void BroadcastUseItemLog(string s)
+        {
+            Console.WriteLine(s);
+        }
     }
 }

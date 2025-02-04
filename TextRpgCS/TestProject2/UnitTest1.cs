@@ -22,7 +22,7 @@ namespace TextRpgCSTests
         public void AddItem_ShouldIncreaseInventoryCount()
         {
             // Arrange
-            var item = new HpPortion();
+            var item = new HpPotion();
 
             // Act
             itemManager.AddItem(item);
@@ -36,7 +36,7 @@ namespace TextRpgCSTests
         public void UseItem_ShouldRemoveFromInventory()
         {
             // Arrange
-            var item = new HpPortion();
+            var item = new HpPotion();
             itemManager.AddItem(item);
 
             // Act

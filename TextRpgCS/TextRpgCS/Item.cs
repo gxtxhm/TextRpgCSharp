@@ -9,8 +9,7 @@ namespace TextRpgCS
 {
     public interface IUseableItem
     {
-        public void Use();
-        event Action<string> OnUsedItem;
+        public void Use(Player player);
     }
     public abstract class Item
     {
@@ -24,21 +23,22 @@ namespace TextRpgCS
         //}
     };
 
-    public class HpPortion : Item,IUseableItem
+    public class HpPotion : Item,IUseableItem
     {
-        public event Action<string> OnUsedItem;
+        public int HealAmount { get; }
 
-        public HpPortion()
+        public HpPotion()
         {
-            Name = "HP포션";
-            Description = "Hp 50을 회복합니다.";
-            Type = ItemType.HpPortion;
+            var config = ItemManager.Instance.GetItemConfig("HpPotion");
+            Type = config != null ? Enum.Parse<ItemType>(config.ItemType) : ItemType.HpPotion; // ✅ JSON에서 `ItemType` 불러오기
+            Name = config != null ? config.Name : "체력 포션";
+            Description = config != null ? config.Description : "사용 시 체력을 회복합니다.";
+            HealAmount = config != null ? config.Effect : 50;
         }
 
-        public void Use()
+        public void Use(Player player)
         {
-            GameManager.Instance.Player.Hp += 50;
-            ItemManager.Instance.RemoveItem(Name);
+            player.Hp += HealAmount;
         }
     };
 
@@ -47,102 +47,109 @@ namespace TextRpgCS
     public abstract class DurationItem : Item, IUseableItem
     {
         public int Duration = 3;
-        public event Action<string> OnUsedItem;
-        public virtual void Use() { }
-        public virtual void EndEffect() { Console.WriteLine($"{Name}아이템의 버프지속시간이 종료되었습니다."); }
+        public virtual void Use(Player player) {  }
+        public virtual void EndEffect(Player player) { Console.WriteLine($"{Name}아이템의 버프지속시간이 종료되었습니다."); }
     }
 
     public class AttackPotion : DurationItem
     {
-        
+        public int BonusDamage { get; }
         public AttackPotion()
         {
-            Name = "공격력증가포션";
-            Description = "공격력을 3턴동안 10증가시킵니다.";
-            Type = ItemType.AttackPotion;
+            var config = ItemManager.Instance.GetItemConfig("AttackPotion");
+            Type = config != null ? Enum.Parse<ItemType>(config.ItemType) : ItemType.AttackPotion; // ✅ JSON에서 `ItemType` 불러오기
+            Name = config != null ? config.Name : "공격력 증가 포션";
+            Description = config != null ? config.Description : "사용 시 일정 시간 동안 공격력이 증가합니다.";
+            BonusDamage = config != null ? config.Effect : 10;
+            Duration = config != null ? config.Duration : 3;
         }
-        public override void Use()
+        public override void Use(Player player)
         {
-            base.Use();
+            base.Use(player);
             // 세턴동안 진행
-            GameManager.Instance.Player.AttackPower += 10;
-            Item? it= ItemManager.Instance.RemoveItem(Name);
-            if(it!=null)
-                ItemManager.Instance.RegistItem(it);
-            
+            player.AttackPower += BonusDamage;
         }
-        public override void EndEffect() 
+        public override void EndEffect(Player player) 
         {
             //if (GameManager.Instance.Player == null) return;
-            GameManager.Instance.Player.AttackPower -= 10;
+            GameManager.Instance.Player.AttackPower -= BonusDamage;
         }
     };
 
     public class ShieldPotion : DurationItem
     {
-
+        public float BonusShield { get; }
         public ShieldPotion()
         {
-            Name = "방어력증가포션";
-            Description = "3턴 동안 받는 피해가 50% 감소합니다.";
-            Type = ItemType.ShieldPotion;
+            var config = ItemManager.Instance.GetItemConfig("ShieldPotion");
+            Type = config != null ? Enum.Parse<ItemType>(config.ItemType) : ItemType.ShieldPotion; // ✅ JSON에서 `ItemType` 불러오기
+            Name = config != null ? config.Name : "방어력증가포션";
+            Description = config != null ? config.Description : "3턴 동안 받는 피해가 50% 감소합니다.";
+            BonusShield = config != null ? config.Effect : 0.5f;
+            Duration = config != null ? config.Duration : 3;
+
         }
 
-        public override void Use()
+        public override void Use(Player player)
         {
-            base.Use();
+            base.Use(player);
             // 3턴 동안 피해감소
-            GameManager.Instance.Player.DefenseRate -=0.5f;
-            Item? it = ItemManager.Instance.RemoveItem(Name);
-            if (it != null)
-                ItemManager.Instance.RegistItem(it);
+            player.DefenseRate -= BonusShield;
         }
-        public override void EndEffect() 
+        public override void EndEffect(Player player) 
         {
-            GameManager.Instance.Player.DefenseRate += 0.5f;
-            
+            GameManager.Instance.Player.DefenseRate += BonusShield;
         }
     };
 
-    public class RandomPortion : Item, IUseableItem
+    public class RandomPotion : Item, IUseableItem
     {
-        public event Action<string> OnUsedItem;
+        private List<string> PositiveEffects;
+        private List<string> NegativeEffects;
+        private Random random = new Random();
 
-        public RandomPortion()
+        public RandomPotion()
         {
-            Name = "랜덤포션";
-            Description = "랜덤으로 긍정적 또는 부정적 효과를 발생시킴.\r\n\r\n" +
-                "긍정적 효과: 체력 전부 회복, 공격력 2배 증가.\r\n\r\n" +
-                "부정적 효과: 체력 절반 감소, 방어력 감소.";
-            Type = ItemType.RandomPortion;
+            var config = ItemManager.Instance.GetItemConfig("RandomPotion");
+            Type = config != null ? Enum.Parse<ItemType>(config.ItemType) : ItemType.RandomPotion; // ✅ JSON에서 `ItemType` 불러오기
+            Name = config != null ? config.Name : "랜덤 포션";
+            Description = config != null ? config.Description : "랜덤으로 긍정적 또는 부정적 효과를 발생시킴.";
+            PositiveEffects = config != null ? config.PositiveEffects : new List<string> { "HpFullRecovery", "DoubleAttackPower" };
+            NegativeEffects = config != null ? config.NegativeEffects : new List<string> { "HalfHp", "DoubleDamageTaken" };
         }
 
-        public void Use()
+        public void Use(Player player)
         {
-            // 랜덤 효과 발생
-            Random random = new Random();
-            
-            int randomValue = random.Next(0, 4);
+            bool isPositive = random.Next(0, 2) == 0; // ✅ 50% 확률로 긍정 or 부정 효과 선택
+            string selectedEffect = isPositive
+                ? PositiveEffects[random.Next(PositiveEffects.Count)]
+                : NegativeEffects[random.Next(NegativeEffects.Count)];
 
-            switch(randomValue)
+            ApplyEffect(player, selectedEffect);
+        }
+        private void ApplyEffect(Player player, string effect)
+        {
+            switch (effect)
             {
-                // hp 전부 회복
-                case 0:
-                    GameManager.Instance.Player.Hp = GameManager.Instance.Player.MaxHp;
-                    break;
-                // 공격력 2배
-                case 1:
-                    GameManager.Instance.Player.AttackPower *= 2;
-                    break;
-                // hp 절반으로 감소
-                case 2:
-                    GameManager.Instance.Player.Hp /= 2;
-                    break;
-                // 받는 데미지 2배
-                case 3:
-                    GameManager.Instance.Player.DefenseRate *= 2;
+                case "HpFullRecovery":
+                    player.Hp = player.MaxHp;
+                    Console.WriteLine($"{player.Name}의 체력이 최대치로 회복되었습니다!");
                     break;
 
+                case "DoubleAttackPower":
+                    player.AttackPower *= 2;
+                    Console.WriteLine($"{player.Name}의 공격력이 2배 증가했습니다!");
+                    break;
+
+                case "HalfHp":
+                    player.Hp /= 2;
+                    Console.WriteLine($"{player.Name}의 체력이 절반으로 감소했습니다!");
+                    break;
+
+                case "DoubleDamageTaken":
+                    player.DefenseRate *= 2;
+                    Console.WriteLine($"{player.Name}이 받는 피해가 2배 증가했습니다!");
+                    break;
             }
         }
     }
