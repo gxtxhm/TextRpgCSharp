@@ -96,24 +96,44 @@ namespace TextRpgCS
             }
         }
 
+        public void LogError(Exception ex)
+        {
+            string logMessage = $"[{DateTime.Now}] 예외 발생: {ex.Message}\n{ex.StackTrace}\n";
+            File.AppendAllText("error_log3.txt", logMessage);
+
+            Console.WriteLine("오류가 발생했습니다. 로그 파일을 확인하세요.");
+        }
+
         public void UsedItem(string itemName, Player player)
         {
-            if (Inventory.ContainsKey(itemName) == false) return;
-
-            Item it = Inventory[itemName][0];
-            IUseableItem? useableItem = it as IUseableItem;
-            if(useableItem==null)
+            try
             {
-                Console.WriteLine("소비아이템이 아닙니다!");return;
+                if (Inventory.ContainsKey(itemName) == false)
+                {
+                    throw new Exception($"{itemName}이 없습니다.");
+                }
+
+                Item it = Inventory[itemName][0];
+                IUseableItem? useableItem = it as IUseableItem;
+                if (useableItem == null)
+                {
+                    Console.WriteLine("소비아이템이 아닙니다!"); return;
+                }
+
+                useableItem.Use(player);
+
+                OnUsedItem?.Invoke($"아이템 로그 : {it.Name}을 사용!");
+
+                RemoveItem(itemName);
+                if (it is DurationItem)
+                    RegistItem(it);
             }
-
-            useableItem.Use(player);
-
-            OnUsedItem?.Invoke($"아이템 로그 : {it.Name}을 사용!");
-
-            RemoveItem(itemName);
-            if (it is DurationItem)
-                RegistItem(it);
+            catch (Exception e)
+            {
+                LogError(e);
+                Console.WriteLine("아이템을 사용할 수 없습니다. 존재하는 아이템을 선택하세요.");
+            }
+            
         }
         
         public void PrintInventory()

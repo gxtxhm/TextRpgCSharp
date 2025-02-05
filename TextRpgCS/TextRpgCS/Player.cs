@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace TextRpgCS
 {
@@ -54,6 +55,34 @@ namespace TextRpgCS
         {
             this.Name = Name;
         }
+
+        public void PrintPropertyValueByReflection(Player player)
+        {
+            Type type = typeof(Player);
+
+            Console.WriteLine("=== Properties ===");
+            var properties = type.GetProperties();
+
+            foreach (var property in properties)
+            {
+                object value = property.GetValue(player); // ✅ 프로퍼티 값을 가져오기 위해 `GetValue(player)` 사용
+                Console.WriteLine($"{property.PropertyType} {property.Name} = {value}");
+                if(property.Name=="Hp")
+                {
+                    property.SetValue(player, 30);
+                }
+            }
+
+            Console.WriteLine("=== Fields ===");
+            var fields = type.GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            foreach (var field in fields)
+            {
+                object value = field.GetValue(player); // ✅ 필드 값을 가져오기 위해 `GetValue(player)` 사용
+                Console.WriteLine($"{field.FieldType} {field.Name} = {value}");
+            }
+        }
+
 
         public void PrintInfo()
         {

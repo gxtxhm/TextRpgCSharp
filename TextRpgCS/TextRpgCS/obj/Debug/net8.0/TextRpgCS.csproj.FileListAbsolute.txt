@@ -42,3 +42,6 @@ C:\Users\PSJ\Desktop\취업관련\20184007_박성진_겜프기말프로젝트자
 C:\Users\PSJ\Desktop\취업관련\20184007_박성진_겜프기말프로젝트자료-1\20184007_박성진_겜프기말프로젝트자료\20184007박성진_겜프기말프로젝트\final\TextRpgCSharp\TextRpgCS\TextRpgCS\obj\Debug\net8.0\TextRpgCS.pdb
 C:\Users\PSJ\Desktop\취업관련\20184007_박성진_겜프기말프로젝트자료-1\20184007_박성진_겜프기말프로젝트자료\20184007박성진_겜프기말프로젝트\final\TextRpgCSharp\TextRpgCS\TextRpgCS\obj\Debug\net8.0\TextRpgCS.genruntimeconfig.cache
 C:\Users\PSJ\Desktop\취업관련\20184007_박성진_겜프기말프로젝트자료-1\20184007_박성진_겜프기말프로젝트자료\20184007박성진_겜프기말프로젝트\final\TextRpgCSharp\TextRpgCS\TextRpgCS\obj\Debug\net8.0\ref\TextRpgCS.dll
+C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\obj\Debug\net8.0\TextRpgCS.csproj.AssemblyReference.cache
+C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\obj\Debug\net8.0\TextRpgCS.csproj.Up2Date

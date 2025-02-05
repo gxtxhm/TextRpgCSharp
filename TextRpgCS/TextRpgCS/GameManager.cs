@@ -44,8 +44,10 @@ namespace TextRpgCS
             Player.OnDeadEvent += GameOver;
             Player.OnAttackEvent += BroadcastPlayerAttack;
 
-            ItemManager.Instance.LoadItemsFromJson();
+            //ItemManager.Instance.LoadItemsFromJson();
             ItemManager.Instance.OnUsedItem += BroadcastUseItemLog;
+
+            Player.PrintPropertyValueByReflection(Player);
         }
 
         public List<Monster> FindHalfHpMonster()

@@ -1,0 +1,12 @@
+[2025-02-06 오전 3:13:46] 예외 발생: MagicPotion이 없습니다.
+   at TextRpgCS.ItemManager.UsedItem(String itemName, Player player) in C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\ItemManager.cs:line 113
+[2025-02-06 오전 3:13:46] 예외 발생: 테스트 예외
+
+[2025-02-06 오전 3:17:18] 예외 발생: MagicPotion이 없습니다.
+   at TextRpgCS.ItemManager.UsedItem(String itemName, Player player) in C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\ItemManager.cs:line 113
+[2025-02-06 오전 3:17:19] 예외 발생: 테스트 예외
+
+[2025-02-06 오전 3:18:01] 예외 발생: MagicPotion이 없습니다.
+   at TextRpgCS.ItemManager.UsedItem(String itemName, Player player) in C:\Users\ParkSungJin\Desktop\TextRpgCSharp\TextRpgCS\TextRpgCS\ItemManager.cs:line 113
+[2025-02-06 오전 3:18:02] 예외 발생: 테스트 예외
+
