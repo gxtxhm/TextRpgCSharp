@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +15,12 @@
       "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\itemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +31,8 @@
       "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\items.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|solutionrelative:textrpgcs\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72951BDC-55EE-4CCF-A285-160B53E1C899}|TextRpgCS\\TextRpgCS.csproj|c:\\users\\parksungjin\\desktop\\textrpgcsharp\\textrpgcs\\textrpgcs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "items.json",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\items.json",
               "RelativeDocumentMoniker": "TextRpgCS\\items.json",
@@ -82,12 +82,11 @@
               "RelativeToolTip": "TextRpgCS\\items.json",
               "ViewState": "AQIAAAoAAAAAAAAAAAAQwA4AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-04T20:11:05.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-04T20:11:05.643Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ItemData.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\ItemData.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\ItemData.cs",
@@ -95,12 +94,11 @@
               "RelativeToolTip": "TextRpgCS\\ItemData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T19:50:28.794Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-04T19:50:28.794Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Character.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Character.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\Character.cs",
@@ -108,31 +106,30 @@
               "RelativeToolTip": "TextRpgCS\\Character.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAABBwA8AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T08:17:00.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T08:17:00.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Item.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Item.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\Item.cs",
               "ToolTip": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Item.cs",
               "RelativeToolTip": "TextRpgCS\\Item.cs",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAAAI8AAAAeAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAI8AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T07:56:19.454Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ItemManager.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\ItemManager.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\ItemManager.cs",
               "ToolTip": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\ItemManager.cs",
               "RelativeToolTip": "TextRpgCS\\ItemManager.cs",
-              "ViewState": "AQIAAJwAAAAAAAAAAAAAAKAAAAAJAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T07:29:15.612Z",
               "EditorCaption": ""
@@ -147,44 +144,43 @@
               "RelativeToolTip": "TextRpgCS\\Boss.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T17:45:09.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T17:45:09.011Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\GameManager.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\GameManager.cs",
               "ToolTip": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\GameManager.cs",
               "RelativeToolTip": "TextRpgCS\\GameManager.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAAAC8AAABDAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAACgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T17:37:49.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Monster.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Monster.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\Monster.cs",
               "ToolTip": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Monster.cs",
               "RelativeToolTip": "TextRpgCS\\Monster.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAwwDEAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T15:37:44.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Player.cs",
               "RelativeDocumentMoniker": "TextRpgCS\\Player.cs",
               "ToolTip": "C:\\Users\\ParkSungJin\\Desktop\\TextRpgCSharp\\TextRpgCS\\TextRpgCS\\Player.cs",
               "RelativeToolTip": "TextRpgCS\\Player.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAC0AAAAKAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAC0AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-21T18:27:54.076Z",
               "EditorCaption": ""
@@ -199,8 +195,7 @@
               "RelativeToolTip": "TextRpgCS\\Program.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAABBwAsAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T18:27:04.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T18:27:04.083Z"
             }
           ]
         }

@@ -48,6 +48,11 @@ namespace TextRpgCS
             ItemManager.Instance.OnUsedItem += BroadcastUseItemLog;
         }
 
+        public List<Monster> FindHalfHpMonster()
+        {
+            return monsters?.Where(n => n.Hp < n.MaxHp / 2).ToList()?? new List<Monster>();
+        }
+
         public void ResetMonter()
         {
             foreach(Monster monster in monsters)

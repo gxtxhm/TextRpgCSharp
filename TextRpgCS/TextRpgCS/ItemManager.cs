@@ -125,6 +125,14 @@ namespace TextRpgCS
             }
             
         }
+        
+        public List<T> FindItemByType<T>(ItemType type) where T : Item
+        {
+            if (Inventory.ContainsKey(type.ToString()) == false)
+                return new List<T>();
+
+            return Inventory[type.ToString()].OfType<T>().ToList();
+        }
         #endregion
 
         #region 사용버프아이템 관련

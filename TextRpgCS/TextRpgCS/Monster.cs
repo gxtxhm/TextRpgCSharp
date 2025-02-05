@@ -12,6 +12,7 @@ namespace TextRpgCS
 
         int _hp = 30;
 
+        public int MaxHp { get; } = 100;
         public int Id { get; } = CountId;
         public string Name { get; set; }
         public int Level { get; set; } = 1;
